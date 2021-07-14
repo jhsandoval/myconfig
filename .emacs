@@ -1,6 +1,6 @@
 (menu-bar-mode 0)
-(tool-bar-mode 0)
-(scroll-bar-mode 0)
+;(tool-bar-mode 0)
+;(scroll-bar-mode 0)
 
 (fset 'yes-or-no-p #'y-or-n-p)
 (fset 'display-startup-echo-area-message #'ignore)
@@ -29,8 +29,11 @@
     doom-themes
     helm
     doom-modeline
+    haskell-mode
     paredit
-    jupyter))
+    jupyter
+    julia-mode
+    julia-repl))
 
 ;; scan packages and if not installed, install it
 
@@ -61,12 +64,12 @@
 
 ;; haskell
 
-; (require 'haskell-mode)
+(require 'haskell-mode)
 
 ;; company
 
 (require 'company)
-(setq company-idle-delay 0.5)
+(setq company-idle-delay 0.25)
 (global-company-mode)
 
 ;; python
@@ -102,9 +105,12 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(custom-safe-themes
-   '("da53441eb1a2a6c50217ee685a850c259e9974a8fa60e899d393040b4b8cc922" default))
+   (quote
+    ("835868dcd17131ba8b9619d14c67c127aa18b90a82438c8613586331129dda63" "da53441eb1a2a6c50217ee685a850c259e9974a8fa60e899d393040b4b8cc922" default)))
+ '(inferior-lisp-program "/usr/bin/sbcl")
  '(package-selected-packages
-   '(jupyter paredit doom-modeline helm doom-themes sly company org-journal)))
+   (quote
+    (jupyter paredit doom-modeline helm doom-themes sly company org-journal))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -112,5 +118,5 @@
  ;; If there is more than one, they won't work right.
  )
 
-(load-theme 'doom-outrun-electric)
-;(load-theme 'doom-one)
+;(load-theme 'doom-outrun-electric)
+(load-theme 'doom-one)
